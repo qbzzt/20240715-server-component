@@ -6,11 +6,14 @@ import { holesky } from 'viem/chains'
 
 // This is how we tell TypeScript that PRIVATE_KEY will be available,
 // and that it will be in the format it expects.
+/*
 declare var process : {
     env: {
       PRIVATE_KEY: `0x${string}`
     }
 }
+*/
+
 
 // This is how we add the definitions in .env to process.env.
 import * as dotenv from "dotenv";
@@ -84,7 +87,7 @@ const publicClient = createPublicClient({
     transport: http(), 
 }) 
 
-const account = privateKeyToAccount(process.env.PRIVATE_KEY)
+const account = privateKeyToAccount(process.env.PRIVATE_KEY as `0x${string}`)
 
 const walletClient = createWalletClient({ 
     account,
